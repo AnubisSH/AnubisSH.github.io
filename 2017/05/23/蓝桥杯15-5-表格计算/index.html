@@ -1,0 +1,793 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1" />
+
+
+
+
+
+
+<meta name="description" content="标题：表格计算 某次无聊中， atm 发现了一个很老的程序。这个程序的功能类似于 Excel ，它对一个表格进行操作。不妨设表格有 n 行，每行有 m 个格子。每个格子的内容可以是一个正整数，也可以是一个公式。公式包括三种：  SUM(x1,y1:x2,y2) 表示求左上角是第 x1 行第 y1 个格子，右下角是第 x2 行第 y2 个格子这个矩形内所有格子的值的和。 AVG(x1,y1:x2,y">
+<meta property="og:type" content="article">
+<meta property="og:title" content="蓝桥杯15-5:表格计算">
+<meta property="og:url" content="https://anubisSH.github.io/2017/05/23/蓝桥杯15-5-表格计算/index.html">
+<meta property="og:site_name" content="Anubis&#39;s blog">
+<meta property="og:description" content="标题：表格计算 某次无聊中， atm 发现了一个很老的程序。这个程序的功能类似于 Excel ，它对一个表格进行操作。不妨设表格有 n 行，每行有 m 个格子。每个格子的内容可以是一个正整数，也可以是一个公式。公式包括三种：  SUM(x1,y1:x2,y2) 表示求左上角是第 x1 行第 y1 个格子，右下角是第 x2 行第 y2 个格子这个矩形内所有格子的值的和。 AVG(x1,y1:x2,y">
+<meta property="og:updated_time" content="2017-05-23T13:46:57.016Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="蓝桥杯15-5:表格计算">
+<meta name="twitter:description" content="标题：表格计算 某次无聊中， atm 发现了一个很老的程序。这个程序的功能类似于 Excel ，它对一个表格进行操作。不妨设表格有 n 行，每行有 m 个格子。每个格子的内容可以是一个正整数，也可以是一个公式。公式包括三种：  SUM(x1,y1:x2,y2) 表示求左上角是第 x1 行第 y1 个格子，右下角是第 x2 行第 y2 个格子这个矩形内所有格子的值的和。 AVG(x1,y1:x2,y">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://anubisSH.github.io/2017/05/23/蓝桥杯15-5-表格计算/"/>
+
+
+
+
+
+  <title>蓝桥杯15-5:表格计算 | Anubis's blog</title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Anubis's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="https://anubisSH.github.io/2017/05/23/蓝桥杯15-5-表格计算/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Anubis">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Anubis's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">蓝桥杯15-5:表格计算</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-05-23T21:45:55+08:00">
+                2017-05-23
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>标题：表格计算</p>
+<p>某次无聊中， atm 发现了一个很老的程序。这个程序的功能类似于 Excel ，它对一个表格进行操作。<br>不妨设表格有 n 行，每行有 m 个格子。<br>每个格子的内容可以是一个正整数，也可以是一个公式。<br>公式包括三种：</p>
+<ol>
+<li>SUM(x1,y1:x2,y2) 表示求左上角是第 x1 行第 y1 个格子，右下角是第 x2 行第 y2 个格子这个矩形内所有格子的值的和。</li>
+<li>AVG(x1,y1:x2,y2) 表示求左上角是第 x1 行第 y1 个格子，右下角是第 x2 行第 y2 个格子这个矩形内所有格子的值的平均数。</li>
+<li>STD(x1,y1:x2,y2) 表示求左上角是第 x1 行第 y1 个格子，右下角是第 x2 行第 y2 个格子这个矩形内所有格子的值的标准差。</li>
+</ol>
+<p>标准差即为方差的平方根。<br>方差就是：每个数据与平均值的差的平方的平均值，用来衡量单个数据离开平均数的程度。</p>
+<p>公式都不会出现嵌套。</p>
+<p>如果这个格子内是一个数，则这个格子的值等于这个数，否则这个格子的值等于格子公式求值结果。</p>
+<p>输入这个表格后，程序会输出每个格子的值。atm 觉得这个程序很好玩，他也想实现一下这个程序。</p>
+<p>「输入格式」<br>第一行两个数 n, m 。<br>接下来 n 行输入一个表格。每行 m 个由空格隔开的字符串，分别表示对应格子的内容。<br>输入保证不会出现循环依赖的情况，即不会出现两个格子 a 和 b 使得 a 的值依赖 b 的值且 b 的值依赖 a 的值。</p>
+<p>「输出格式」<br>输出一个表格，共 n 行，每行 m 个保留两位小数的实数。<br>数据保证不会有格子的值超过 1e6 。</p>
+<p>「样例输入」<br>3 2<br>1 SUM(2,1:3,1)<br>2 AVG(1,1:1,2)<br>SUM(1,1:2,1) STD(1,1:2,2)</p>
+<p>「样例输出」<br>1.00 5.00<br>2.00 3.00<br>3.00 1.48</p>
+<p>「数据范围」<br>对于 30% 的数据，满足： n, m &lt;= 5<br>对于 100% 的数据，满足： n, m &lt;= 50</p>
+<p>资源约定：<br>峰值内存消耗（含虚拟机） &lt; 512M<br>CPU消耗  &lt; 2000ms</p>
+<p>请严格按要求输出，不要画蛇添足地打印类似：“请您输入…” 的多余内容。</p>
+<p>所有代码放在同一个源文件中，调试通过后，拷贝提交该源码。<br>注意：不要使用package语句。不要使用jdk1.7及以上版本的特性。<br>注意：主类的名字必须是：Main，否则按无效代码处理。</p>
+<p>import java.util.Scanner;</p>
+<p>public class b5 {</p>
+<pre><code>/**
+ * @param args
+ */
+private static String[][] b ;
+private static String[][] str;
+public static void main(String[] args) {
+    // TODO Auto-generated method stub
+    Scanner in = new Scanner (System.in);
+    int n = in.nextInt();
+    int m = in.nextInt();
+    str = new String[n][m];
+    b = new String[n][m];
+    for(int i=0;i&lt;n;i++)
+        for(int j=0;j&lt;m;j++)
+            str[i][j]=in.next();
+    f(n,m);
+
+}
+public static void f(int n,int m){
+    java.text.DecimalFormat   df   =new   java.text.DecimalFormat(&quot;#.00&quot;);  //保留两位小数
+    for(int i=0;i&lt;n;i++)
+        for(int j=0;j&lt;m;j++){
+            if(str[i][j].length()&lt;=2)b[i][j]=df.format((double)Integer.parseInt(str[i][j]));
+            else if(str[i][j].substring(0, 3).equals(&quot;SUM&quot;))b[i][j]=df.format((double)SUM(i,j));
+            else if(str[i][j].substring(0, 3).equals(&quot;AVG&quot;))b[i][j]=df.format((double)AVG(i,j));
+            else if(str[i][j].substring(0, 3).equals(&quot;STD&quot;))b[i][j]=df.format((double)STD(i,j));
+        }
+    for(int i=0;i&lt;n;i++){
+        for(int j=0;j&lt;m;j++)
+            System.out.print(b[i][j]+&quot; &quot;);
+        System.out.println();
+    }
+}
+public static double SUM(int x,int y){
+    String str1 = &quot;&quot;,str2=&quot;&quot;;
+    for(int i=4;i&lt;str[x][y].length();i++){
+        if(str[x][y].substring(i, i+1).equals(&quot;:&quot;)){ //根据:分离
+            str1=str[x][y].substring(4, i);
+            str2=str[x][y].substring(i+1, str[x][y].length());
+            break;
+        }    
+    }
+    int a1 = 0,b1 = 0,a2 = 0,b2 = 0,j=0;
+    while(!str1.substring(j,j+1).equals(&quot;,&quot;)){//根据，分离
+        j++;
+    }
+    a1=Integer.parseInt(str1.substring(0, j))-1;
+    b1=Integer.parseInt(str1.substring(j+1, str1.length()))-1;
+    j=0;
+    while(!str2.substring(j,j+1).equals(&quot;,&quot;)){
+        j++;
+    }
+    a2=Integer.parseInt(str2.substring(0, j))-1;
+    b2=Integer.parseInt(str2.substring(j+1, str2.length()-1))-1; //str2 里面的字符串多带一个）
+    double sun = 0;
+    for(int n=a1;n&lt;=a2;n++)
+        for(int m=b1;m&lt;=b2;m++){
+            if(str[n][m].length()&lt;=2)sun+=Integer.parseInt(str[n][m]);
+            else if(str[n][m].substring(0, 3).equals(&quot;SUM&quot;))sun+=SUM(n,m);
+            else if(str[n][m].substring(0, 3).equals(&quot;AVG&quot;))sun+=AVG(n,m);
+            else if(str[n][m].substring(0, 3).equals(&quot;STD&quot;))sun+=STD(n,m);
+        }
+    return sun;
+}
+public static double  AVG(int x,int y){
+    String str1 = &quot;&quot;,str2=&quot;&quot;;
+    for(int i=4;i&lt;str[x][y].length();i++){
+        if(str[x][y].substring(i, i+1).equals(&quot;:&quot;)){
+            str1=str[x][y].substring(4, i);
+            str2=str[x][y].substring(i+1, str[x][y].length());
+            break;
+        }    
+    }
+    int a1 = 0,b1 = 0,a2 = 0,b2 = 0,j=0;
+    while(!str1.substring(j,j+1).equals(&quot;,&quot;)){
+        j++;
+    }
+    a1=Integer.parseInt(str1.substring(0, j))-1;
+    b1=Integer.parseInt(str1.substring(j+1, str1.length()))-1;
+    j=0;
+    while(!str2.substring(j,j+1).equals(&quot;,&quot;)){
+        j++;
+    }
+    a2=Integer.parseInt(str2.substring(0, j))-1;
+    b2=Integer.parseInt(str2.substring(j+1, str2.length()-1))-1;
+    double avg = 0,sun=0 ,count=(a2-a1+1)*(b2-b1+1);
+    for(int n=a1;n&lt;=a2;n++)
+        for(int m=b1;m&lt;=b2;m++){
+            if(str[n][m].length()&lt;=2)sun+=Integer.parseInt(str[n][m]);
+            else if(str[n][m].substring(0, 3).equals(&quot;SUM&quot;))sun+=SUM(n,m);
+            else if(str[n][m].substring(0, 3).equals(&quot;AVG&quot;))sun+=AVG(n,m);
+            else if(str[n][m].substring(0, 3).equals(&quot;STD&quot;))sun+=STD(n,m);
+        }
+    avg = sun/count;
+    return avg;
+}
+public static double  STD(int x,int y){
+    String str1 = &quot;&quot;,str2=&quot;&quot;;
+    for(int i=4;i&lt;str[x][y].length();i++){
+        if(str[x][y].substring(i, i+1).equals(&quot;:&quot;)){
+            str1=str[x][y].substring(4, i);
+            str2=str[x][y].substring(i+1, str[x][y].length());
+            break;
+        }    
+    }
+    int a1 = 0,b1 = 0,a2 = 0,b2 = 0,j=0;
+    while(!str1.substring(j,j+1).equals(&quot;,&quot;)){
+        j++;
+    }
+    a1=Integer.parseInt(str1.substring(0, j))-1;
+    b1=Integer.parseInt(str1.substring(j+1, str1.length()))-1;
+    j=0;
+    while(!str2.substring(j,j+1).equals(&quot;,&quot;)){
+        j++;
+    }
+    a2=Integer.parseInt(str2.substring(0, j))-1;
+    b2=Integer.parseInt(str2.substring(j+1, str2.length()-1))-1;
+    double avg=AVG(x,y),sun=0,count=(a2-a1+1)*(b2-b1+1),std=0;;
+    for(int n=a1;n&lt;=a2;n++)
+        for(int m=b1;m&lt;=b2;m++){
+            if(str[n][m].length()&lt;=2)sun+=(Integer.parseInt(str[n][m])-avg)*(Integer.parseInt(str[n][m])-avg);
+            else if(str[n][m].substring(0, 3).equals(&quot;SUM&quot;))sun+=(SUM(n,m)-avg)*(SUM(n,m)-avg);
+            else if(str[n][m].substring(0, 3).equals(&quot;AVG&quot;))sun+=(AVG(n,m)-avg)*(AVG(n,m)-avg);
+            else if(str[n][m].substring(0, 3).equals(&quot;STD&quot;))sun+=(STD(n,m)-avg)*(STD(n,m)-avg);
+        }
+    std = Math.sqrt(sun/count);
+    return std;
+}
+</code></pre><p>}</p>
+<p>没有什么算法难度，主要注意分离字符判断递归即可</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/05/23/蓝桥杯14-5-幂一矩阵/" rel="next" title="蓝桥杯14-5:幂一矩阵">
+                <i class="fa fa-chevron-left"></i> 蓝桥杯14-5:幂一矩阵
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/05/23/蓝桥杯16-4-路径之谜/" rel="prev" title="蓝桥杯16-4:路径之谜">
+                蓝桥杯16-4:路径之谜 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview sidebar-panel sidebar-panel-active">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.jpg"
+               alt="Anubis" />
+          <p class="site-author-name" itemprop="name">Anubis</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Anubis</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
