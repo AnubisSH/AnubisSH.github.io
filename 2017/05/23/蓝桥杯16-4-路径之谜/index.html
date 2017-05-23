@@ -90,16 +90,16 @@
 
 
 
-<meta name="description" content="路径之谜 小明冒充X星球的骑士，进入了一个奇怪的城堡。城堡里边什么都没有，只有方形石头铺成的地面。 假设城堡地面是 n x n 个方格。【如图1.png】所示。 按习俗，骑士要从西北角走到东南角。可以横向或纵向移动，但不能斜着走，也不能跳跃。每走到一个新方格，就要向正北方和正西方各射一箭。（城堡的西墙和北墙内各有 n 个靶子） 同一个方格只允许经过一次。但不必做完所有的方格。 如果只给出靶子上箭的">
+<meta name="description" content="路径之谜  小明冒充X星球的骑士，进入了一个奇怪的城堡。 城堡里边什么都没有，只有方形石头铺成的地面。  假设城堡地面是 n x n 个方格。【如图1.png】所示。  按习俗，骑士要从西北角走到东南角。 可以横向或纵向移动，但不能斜着走，也不能跳跃。 每走到一个新方格，就要向正北方和正西方各射一箭。 （城堡的西墙和北墙内各有 n 个靶子）   同一个方格只允许经过一次。但不必做完所有的方格。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="蓝桥杯16-4:路径之谜">
 <meta property="og:url" content="https://anubisSH.github.io/2017/05/23/蓝桥杯16-4-路径之谜/index.html">
 <meta property="og:site_name" content="Anubis&#39;s blog">
-<meta property="og:description" content="路径之谜 小明冒充X星球的骑士，进入了一个奇怪的城堡。城堡里边什么都没有，只有方形石头铺成的地面。 假设城堡地面是 n x n 个方格。【如图1.png】所示。 按习俗，骑士要从西北角走到东南角。可以横向或纵向移动，但不能斜着走，也不能跳跃。每走到一个新方格，就要向正北方和正西方各射一箭。（城堡的西墙和北墙内各有 n 个靶子） 同一个方格只允许经过一次。但不必做完所有的方格。 如果只给出靶子上箭的">
-<meta property="og:updated_time" content="2017-05-23T13:48:31.868Z">
+<meta property="og:description" content="路径之谜  小明冒充X星球的骑士，进入了一个奇怪的城堡。 城堡里边什么都没有，只有方形石头铺成的地面。  假设城堡地面是 n x n 个方格。【如图1.png】所示。  按习俗，骑士要从西北角走到东南角。 可以横向或纵向移动，但不能斜着走，也不能跳跃。 每走到一个新方格，就要向正北方和正西方各射一箭。 （城堡的西墙和北墙内各有 n 个靶子）   同一个方格只允许经过一次。但不必做完所有的方格。">
+<meta property="og:updated_time" content="2017-05-23T14:28:26.883Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="蓝桥杯16-4:路径之谜">
-<meta name="twitter:description" content="路径之谜 小明冒充X星球的骑士，进入了一个奇怪的城堡。城堡里边什么都没有，只有方形石头铺成的地面。 假设城堡地面是 n x n 个方格。【如图1.png】所示。 按习俗，骑士要从西北角走到东南角。可以横向或纵向移动，但不能斜着走，也不能跳跃。每走到一个新方格，就要向正北方和正西方各射一箭。（城堡的西墙和北墙内各有 n 个靶子） 同一个方格只允许经过一次。但不必做完所有的方格。 如果只给出靶子上箭的">
+<meta name="twitter:description" content="路径之谜  小明冒充X星球的骑士，进入了一个奇怪的城堡。 城堡里边什么都没有，只有方形石头铺成的地面。  假设城堡地面是 n x n 个方格。【如图1.png】所示。  按习俗，骑士要从西北角走到东南角。 可以横向或纵向移动，但不能斜着走，也不能跳跃。 每走到一个新方格，就要向正北方和正西方各射一箭。 （城堡的西墙和北墙内各有 n 个靶子）   同一个方格只允许经过一次。但不必做完所有的方格。">
 
 
 
@@ -307,100 +307,148 @@
       
 
       
-        <p>路径之谜</p>
-<p>小明冒充X星球的骑士，进入了一个奇怪的城堡。<br>城堡里边什么都没有，只有方形石头铺成的地面。</p>
-<p>假设城堡地面是 n x n 个方格。【如图1.png】所示。</p>
-<p>按习俗，骑士要从西北角走到东南角。<br>可以横向或纵向移动，但不能斜着走，也不能跳跃。<br>每走到一个新方格，就要向正北方和正西方各射一箭。<br>（城堡的西墙和北墙内各有 n 个靶子）</p>
-<p>同一个方格只允许经过一次。但不必做完所有的方格。</p>
-<p>如果只给出靶子上箭的数目，你能推断出骑士的行走路线吗？</p>
-<p>有时是可以的，比如图1.png中的例子。</p>
-<p>本题的要求就是已知箭靶数字，求骑士的行走路径（测试数据保证路径唯一）</p>
-<p>输入：<br>第一行一个整数N(0&lt;N&lt;20)，表示地面有 N x N 个方格<br>第二行N个整数，空格分开，表示北边的箭靶上的数字（自西向东）<br>第三行N个整数，空格分开，表示西边的箭靶上的数字（自北向南）</p>
-<p>输出：<br>一行若干个整数，表示骑士路径。</p>
-<p>为了方便表示，我们约定每个小格子用一个数字代表，从西北角开始编号: 0,1,2,3….<br>比如，图1.png中的方块编号为：</p>
-<p>0  1  2  3        1 0    0<br>4  5  6  7      0 1    1<br>8  9  10 11      -1 0    2<br>12 13 14 15      0,-1    3</p>
-<p>示例：<br>用户输入：<br>4<br>2 4 3 4<br>4 3 3 3</p>
-<p>程序应该输出：<br>0 4 5 1 2 3 7 11 10 9 13 14 15</p>
-<p>资源约定：<br>峰值内存消耗 &lt; 256M<br>CPU消耗  &lt; 1000ms</p>
-<p>请严格按要求输出，不要画蛇添足地打印类似：“请您输入…” 的多余内容。</p>
-<p>所有代码放在同一个源文件中，调试通过后，拷贝提交该源码。<br>注意：不要使用package语句。不要使用jdk1.7及以上版本的特性。<br>注意：主类的名字必须是：Main，否则按无效代码处理。</p>
-<p>import java.util.ArrayList;<br>import java.util.Scanner;</p>
-<p>public class a4 {//路径</p>
-<pre><code>public static int n=0;
-public static int a1[] ;
-public static int a2[] ;
-public static ArrayList&lt;Integer&gt; l = new ArrayList&lt;Integer&gt;();
-public static int w[][] = {{0,1},{1,0},{0,-1},{-1,0}};//分别代表向右走，向下走，向左走，向右走
-public static int x=0,y=0;//（x，y）代表a的数组下标a[0][0]-&gt;a[0][1]向右走一步
-public static void main(String[] args) {
-    // TODO Auto-generated method stub
-    Scanner in = new Scanner (System.in);
-    n = in.nextInt();
-    a1 = new int[n];
-    a2 = new int[n];
-    for(int i=0;i&lt;n;i++)
-        a1[i]=in.nextInt();
-    for(int i=0;i&lt;n;i++)
-        a2[i]=in.nextInt();
-    int a[][] = new int [n][n];    
-    a[0][0]=1;
-    l.add(0);//累计坐标
-    f(a);
-}
-public static void f (int a[][]){
-    if(x==n-1&amp;&amp;y==n-1){//判断是不是走到15
-        if(sun(a,a1,a2)==1)//验证是否满足条件
-            for(int i=0;i&lt;l.size();i++)
-                System.out.print(l.get(i)+&quot; &quot;);
+        <pre><code>路径之谜
+
+小明冒充X星球的骑士，进入了一个奇怪的城堡。
+城堡里边什么都没有，只有方形石头铺成的地面。
+
+假设城堡地面是 n x n 个方格。【如图1.png】所示。
+
+按习俗，骑士要从西北角走到东南角。
+可以横向或纵向移动，但不能斜着走，也不能跳跃。
+每走到一个新方格，就要向正北方和正西方各射一箭。
+（城堡的西墙和北墙内各有 n 个靶子）
+
+
+同一个方格只允许经过一次。但不必做完所有的方格。
+
+如果只给出靶子上箭的数目，你能推断出骑士的行走路线吗？
+
+有时是可以的，比如图1.png中的例子。
+
+本题的要求就是已知箭靶数字，求骑士的行走路径（测试数据保证路径唯一）
+
+输入：
+第一行一个整数N(0&lt;N&lt;20)，表示地面有 N x N 个方格
+第二行N个整数，空格分开，表示北边的箭靶上的数字（自西向东）
+第三行N个整数，空格分开，表示西边的箭靶上的数字（自北向南）
+
+输出：
+一行若干个整数，表示骑士路径。
+
+为了方便表示，我们约定每个小格子用一个数字代表，从西北角开始编号: 0,1,2,3....
+比如，图1.png中的方块编号为：
+
+0  1  2  3        1 0    0    
+4  5  6  7      0 1    1    
+8  9  10 11      -1 0    2
+12 13 14 15      0,-1    3
+
+
+示例：
+用户输入：
+4
+2 4 3 4
+4 3 3 3
+
+程序应该输出：
+0 4 5 1 2 3 7 11 10 9 13 14 15
+
+
+
+资源约定：
+峰值内存消耗 &lt; 256M
+CPU消耗  &lt; 1000ms
+
+
+请严格按要求输出，不要画蛇添足地打印类似：“请您输入...” 的多余内容。
+
+所有代码放在同一个源文件中，调试通过后，拷贝提交该源码。
+注意：不要使用package语句。不要使用jdk1.7及以上版本的特性。
+注意：主类的名字必须是：Main，否则按无效代码处理。
+
+
+import java.util.ArrayList;
+import java.util.Scanner;
+
+
+public class a4 {//路径
+
+    public static int n=0;
+    public static int a1[] ;
+    public static int a2[] ;
+    public static ArrayList&lt;Integer&gt; l = new ArrayList&lt;Integer&gt;();
+    public static int w[][] = {{0,1},{1,0},{0,-1},{-1,0}};//分别代表向右走，向下走，向左走，向右走
+    public static int x=0,y=0;//（x，y）代表a的数组下标a[0][0]-&gt;a[0][1]向右走一步
+    public static void main(String[] args) {
+        // TODO Auto-generated method stub
+        Scanner in = new Scanner (System.in);
+        n = in.nextInt();
+        a1 = new int[n];
+        a2 = new int[n];
+        for(int i=0;i&lt;n;i++)
+            a1[i]=in.nextInt();
+        for(int i=0;i&lt;n;i++)
+            a2[i]=in.nextInt();
+        int a[][] = new int [n][n];    
+        a[0][0]=1;
+        l.add(0);//累计坐标
+        f(a);
     }
-    else{
-        for(int i=0;i&lt;4;i++){
-            x=x+w[i][0];
-            y=y+w[i][1];
-            int m = x*n+y; //数组下标转换位置数字
-            l.add(m);
-            if(check(a,x,y)==1){ //回溯算法
-                a[x][y]=1;
-                f(a);
-                a[x][y]=0;
+    public static void f (int a[][]){
+        if(x==n-1&amp;&amp;y==n-1){//判断是不是走到15
+            if(sun(a,a1,a2)==1)//验证是否满足条件
+                for(int i=0;i&lt;l.size();i++)
+                    System.out.print(l.get(i)+&quot; &quot;);
+        }
+        else{
+            for(int i=0;i&lt;4;i++){
+                x=x+w[i][0];
+                y=y+w[i][1];
+                int m = x*n+y; //数组下标转换位置数字
+                l.add(m);
+                if(check(a,x,y)==1){ //回溯算法
+                    a[x][y]=1;
+                    f(a);
+                    a[x][y]=0;
+                }
+                x=x-w[i][0];
+                y=y-w[i][1];
+                l.remove(l.size()-1); 
             }
-            x=x-w[i][0];
-            y=y-w[i][1];
-            l.remove(l.size()-1); 
         }
     }
-}
-public static int check(int a[][],int x,int y){
-    if(x&lt;0||y&lt;0||x&gt;n-1||y&gt;n-1||a[x][y]==1)
-        return 0;
-    return 1;
-}
-public static int sun (int a[][],int a1[],int a2[]){ 
-    int p=0;
-    for(int i=0;i&lt;n;i++){
-        int h=0;
-        for(int j=0;j&lt;n;j++){
-            if(a[i][j]==1)
-                h++;
-        }
-        if(h!=a2[i])p=1;
-    }
-    int q=0;
-    for(int i=0;i&lt;n;i++){
-        int l=0;
-        for(int j=0;j&lt;n;j++){
-            if(a[j][i]==1)
-                l++;
-        }
-        if(l!=a1[i])q=1;
-    }
-    if(p==0&amp;&amp;q==0)
+    public static int check(int a[][],int x,int y){
+        if(x&lt;0||y&lt;0||x&gt;n-1||y&gt;n-1||a[x][y]==1)
+            return 0;
         return 1;
-    else
-        return 0;
+    }
+    public static int sun (int a[][],int a1[],int a2[]){ 
+        int p=0;
+        for(int i=0;i&lt;n;i++){
+            int h=0;
+            for(int j=0;j&lt;n;j++){
+                if(a[i][j]==1)
+                    h++;
+            }
+            if(h!=a2[i])p=1;
+        }
+        int q=0;
+        for(int i=0;i&lt;n;i++){
+            int l=0;
+            for(int j=0;j&lt;n;j++){
+                if(a[j][i]==1)
+                    l++;
+            }
+            if(l!=a1[i])q=1;
+        }
+        if(p==0&amp;&amp;q==0)
+            return 1;
+        else
+            return 0;
+    }
 }
-</code></pre><p>}</p>
-<p>经典回溯算法</p>
+</code></pre><p>经典回溯算法</p>
 
       
     </div>

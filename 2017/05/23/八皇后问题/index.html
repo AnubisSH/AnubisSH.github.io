@@ -90,16 +90,16 @@
 
 
 
-<meta name="description" content="public class bahuanghou {    /**  * @param args  */ private static int a[][] = new int [8][8]; private static int count = 0; public static void main(String[] args) {     // TODO Auto-generated method">
+<meta name="description" content="public class bahuanghou {     /**      * @param args      */     private static int a[][] = new int [8][8];     private static int count = 0;     public static void main(String[] args) {         // TO">
 <meta property="og:type" content="article">
 <meta property="og:title" content="八皇后问题">
 <meta property="og:url" content="https://anubisSH.github.io/2017/05/23/八皇后问题/index.html">
 <meta property="og:site_name" content="Anubis&#39;s blog">
-<meta property="og:description" content="public class bahuanghou {    /**  * @param args  */ private static int a[][] = new int [8][8]; private static int count = 0; public static void main(String[] args) {     // TODO Auto-generated method">
-<meta property="og:updated_time" content="2017-05-23T14:23:00.945Z">
+<meta property="og:description" content="public class bahuanghou {     /**      * @param args      */     private static int a[][] = new int [8][8];     private static int count = 0;     public static void main(String[] args) {         // TO">
+<meta property="og:updated_time" content="2017-05-23T14:26:05.684Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="八皇后问题">
-<meta name="twitter:description" content="public class bahuanghou {    /**  * @param args  */ private static int a[][] = new int [8][8]; private static int count = 0; public static void main(String[] args) {     // TODO Auto-generated method">
+<meta name="twitter:description" content="public class bahuanghou {     /**      * @param args      */     private static int a[][] = new int [8][8];     private static int count = 0;     public static void main(String[] args) {         // TO">
 
 
 
@@ -307,70 +307,71 @@
       
 
       
-        <p>public class bahuanghou {<br>    /**</p>
-<pre><code> * @param args
- */
-private static int a[][] = new int [8][8];
-private static int count = 0;
-public static void main(String[] args) {
-    // TODO Auto-generated method stub
-    f(0,0);
-    System.out.print(count);
-}
-public static void f(int x,int y){
-    if(y&gt;=8){
-        count++;
-        for(int i=0;i&lt;8;i++){
-            for(int j=0;j&lt;8;j++)
-                System.out.print(a[i][j]);
+        <pre><code>public class bahuanghou {
+    /**
+     * @param args
+     */
+    private static int a[][] = new int [8][8];
+    private static int count = 0;
+    public static void main(String[] args) {
+        // TODO Auto-generated method stub
+        f(0,0);
+        System.out.print(count);
+    }
+    public static void f(int x,int y){
+        if(y&gt;=8){
+            count++;
+            for(int i=0;i&lt;8;i++){
+                for(int j=0;j&lt;8;j++)
+                    System.out.print(a[i][j]);
+                System.out.println();
+            }
             System.out.println();
         }
-        System.out.println();
-    }
-    else{
-        for(int i=0;i&lt;8;i++){
-            x=x+i;
-            if(check(x,y)==0){
-                a[x][y]=1;                    
-                f(0,y+1);
-                a[x][y]=0;                    
+        else{
+            for(int i=0;i&lt;8;i++){
+                x=x+i;
+                if(check(x,y)==0){
+                    a[x][y]=1;                    
+                    f(0,y+1);
+                    a[x][y]=0;                    
+                }
+                x=x-i;
+
             }
-            x=x-i;
 
         }
 
     }
+    public static int check(int x,int y ){
+        int m =0;
+        for(int i=0;i&lt;8;i++)
+            if(a[x][i]!=0)
+                m=1;
+        for(int i=0;i&lt;8;i++)
+            if(a[i][y]!=0)
+                m=1;
+        for(int i=0;i&lt;8;i++){
+            if(x+i&gt;=8||y+i&gt;=8)break;
+            if((a[x+i][y+i]!=0))m=1;
 
+        }
+        for(int i=0;i&lt;8;i++){
+            if(x-i&lt;0||y-i&lt;0)break;
+            if((a[x-i][y-i]!=0))m=1;
+        }
+        for(int i=0;i&lt;8;i++){
+            if(y+i&gt;=8||x-i&lt;0)break;
+            if((a[x-i][y+i]!=0))m=1;
+        }
+        for(int i=0;i&lt;8;i++){
+            if(x+i&gt;=8||y-i&lt;0)break;
+            if((a[x+i][y-i]!=0))m=1;
+        }
+        return m;
+    }
 }
-public static int check(int x,int y ){
-    int m =0;
-    for(int i=0;i&lt;8;i++)
-        if(a[x][i]!=0)
-            m=1;
-    for(int i=0;i&lt;8;i++)
-        if(a[i][y]!=0)
-            m=1;
-    for(int i=0;i&lt;8;i++){
-        if(x+i&gt;=8||y+i&gt;=8)break;
-        if((a[x+i][y+i]!=0))m=1;
-
-    }
-    for(int i=0;i&lt;8;i++){
-        if(x-i&lt;0||y-i&lt;0)break;
-        if((a[x-i][y-i]!=0))m=1;
-    }
-    for(int i=0;i&lt;8;i++){
-        if(y+i&gt;=8||x-i&lt;0)break;
-        if((a[x-i][y+i]!=0))m=1;
-    }
-    for(int i=0;i&lt;8;i++){
-        if(x+i&gt;=8||y-i&lt;0)break;
-        if((a[x+i][y-i]!=0))m=1;
-    }
-    return m;
-}
-</code></pre><p>}</p>
-
+</code></pre>
       
     </div>
 

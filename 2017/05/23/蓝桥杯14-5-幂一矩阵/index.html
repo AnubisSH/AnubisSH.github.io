@@ -90,16 +90,16 @@
 
 
 
-<meta name="description" content="标题：幂一矩阵 天才少年的邻居 atm 最近学习了线性代数相关的理论，他对“矩阵”这个概念特别感兴趣。矩阵中有个概念叫做幂零矩阵。对于一个方阵 M ，如果存在一个正整数 k 满足 M^k = 0 ，那么 M 就是一个幂零矩阵。（^ 表示乘方）  atm 不满足幂零矩阵，他自己设想了一个幂一矩阵：对于一个方阵 M ，如果存在一个正整数 k 满足 M^k = I ，其中 I 是单位矩阵，那么 M 就是">
+<meta name="description" content="标题：幂一矩阵      天才少年的邻居 atm 最近学习了线性代数相关的理论，他对“矩阵”这个概念特别感兴趣。矩阵中有个概念叫做幂零矩阵。对于一个方阵 M ，如果存在一个正整数 k 满足 M^k = 0 ，那么 M 就是一个幂零矩阵。（^ 表示乘方）      atm 不满足幂零矩阵，他自己设想了一个幂一矩阵：对于一个方阵 M ，如果存在一个正整数 k 满足 M^k = I ，其中 I 是单位矩">
 <meta property="og:type" content="article">
 <meta property="og:title" content="蓝桥杯14-5:幂一矩阵">
 <meta property="og:url" content="https://anubisSH.github.io/2017/05/23/蓝桥杯14-5-幂一矩阵/index.html">
 <meta property="og:site_name" content="Anubis&#39;s blog">
-<meta property="og:description" content="标题：幂一矩阵 天才少年的邻居 atm 最近学习了线性代数相关的理论，他对“矩阵”这个概念特别感兴趣。矩阵中有个概念叫做幂零矩阵。对于一个方阵 M ，如果存在一个正整数 k 满足 M^k = 0 ，那么 M 就是一个幂零矩阵。（^ 表示乘方）  atm 不满足幂零矩阵，他自己设想了一个幂一矩阵：对于一个方阵 M ，如果存在一个正整数 k 满足 M^k = I ，其中 I 是单位矩阵，那么 M 就是">
-<meta property="og:updated_time" content="2017-05-23T13:44:58.080Z">
+<meta property="og:description" content="标题：幂一矩阵      天才少年的邻居 atm 最近学习了线性代数相关的理论，他对“矩阵”这个概念特别感兴趣。矩阵中有个概念叫做幂零矩阵。对于一个方阵 M ，如果存在一个正整数 k 满足 M^k = 0 ，那么 M 就是一个幂零矩阵。（^ 表示乘方）      atm 不满足幂零矩阵，他自己设想了一个幂一矩阵：对于一个方阵 M ，如果存在一个正整数 k 满足 M^k = I ，其中 I 是单位矩">
+<meta property="og:updated_time" content="2017-05-23T14:27:07.833Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="蓝桥杯14-5:幂一矩阵">
-<meta name="twitter:description" content="标题：幂一矩阵 天才少年的邻居 atm 最近学习了线性代数相关的理论，他对“矩阵”这个概念特别感兴趣。矩阵中有个概念叫做幂零矩阵。对于一个方阵 M ，如果存在一个正整数 k 满足 M^k = 0 ，那么 M 就是一个幂零矩阵。（^ 表示乘方）  atm 不满足幂零矩阵，他自己设想了一个幂一矩阵：对于一个方阵 M ，如果存在一个正整数 k 满足 M^k = I ，其中 I 是单位矩阵，那么 M 就是">
+<meta name="twitter:description" content="标题：幂一矩阵      天才少年的邻居 atm 最近学习了线性代数相关的理论，他对“矩阵”这个概念特别感兴趣。矩阵中有个概念叫做幂零矩阵。对于一个方阵 M ，如果存在一个正整数 k 满足 M^k = 0 ，那么 M 就是一个幂零矩阵。（^ 表示乘方）      atm 不满足幂零矩阵，他自己设想了一个幂一矩阵：对于一个方阵 M ，如果存在一个正整数 k 满足 M^k = I ，其中 I 是单位矩">
 
 
 
@@ -307,74 +307,110 @@
       
 
       
-        <p>标题：幂一矩阵</p>
-<pre><code>天才少年的邻居 atm 最近学习了线性代数相关的理论，他对“矩阵”这个概念特别感兴趣。矩阵中有个概念叫做幂零矩阵。对于一个方阵 M ，如果存在一个正整数 k 满足 M^k = 0 ，那么 M 就是一个幂零矩阵。（^ 表示乘方）
+        <pre><code>标题：幂一矩阵
 
-atm 不满足幂零矩阵，他自己设想了一个幂一矩阵：对于一个方阵 M ，如果存在一个正整数 k 满足 M^k = I ，其中 I 是单位矩阵，那么 M 就是一个幂一矩阵。
+    天才少年的邻居 atm 最近学习了线性代数相关的理论，他对“矩阵”这个概念特别感兴趣。矩阵中有个概念叫做幂零矩阵。对于一个方阵 M ，如果存在一个正整数 k 满足 M^k = 0 ，那么 M 就是一个幂零矩阵。（^ 表示乘方）
 
-atm 特别钟情于这样一种方阵：每行每列有且仅有一个 1 。经过 atm 不断实验，他发现这种矩阵都是幂一矩阵。
+    atm 不满足幂零矩阵，他自己设想了一个幂一矩阵：对于一个方阵 M ，如果存在一个正整数 k 满足 M^k = I ，其中 I 是单位矩阵，那么 M 就是一个幂一矩阵。
 
-现在，他的问题是，给定一个满足以上条件的方阵，他想求最小的 k 是多少。
-</code></pre><p>【输入格式】<br>第一行一个正整数 n ，表示矩阵大小是 n * n 。<br>接下来 n 行，每行两个正整数 i j 表示方阵的第 i 行第 j 列为 1。<br>1 &lt;= i, j &lt;= n 。<br>行号，列号都从1开始。</p>
-<p>【输出格式】<br>一行。一个正整数，即题目中所说最小的 k 。</p>
-<p>【样例输入】<br>5<br>3 1<br>1 2<br>4 4<br>2 3<br>5 5</p>
-<p>【样例输出】<br>3</p>
-<p>【数据范围】<br>对于 30% 的数据满足 n &lt;= 10<br>对于 60% 的数据答案不超过 10^18<br>对于 100% 的数据满足 n &lt;= 10000</p>
-<p>资源约定：<br>峰值内存消耗（含虚拟机） &lt; 256M<br>CPU消耗  &lt; 1000ms</p>
-<p>请严格按要求输出，不要画蛇添足地打印类似：“请您输入…” 的多余内容。</p>
-<p>所有代码放在同一个源文件中，调试通过后，拷贝提交该源码。<br>注意：不要使用package语句。不要使用jdk1.7及以上版本的特性。<br>注意：主类的名字必须是：Main，否则按无效代码处理。</p>
-<p>import java.util.Scanner;</p>
-<p>public class c15 {</p>
-<pre><code>/**
- * @param args
- */
-private static int count = 1;//初始为一次幂
-private static int b[][];
-private static int c[][];
-public static void main(String[] args) {
-    // TODO Auto-generated method stub
-    Scanner in = new Scanner(System.in);
-    int n = in.nextInt();
-    int a[][] = new int [n][n];
-    b = new int[n][n];
-    c = new int [n][n];
-    for(int i=0;i&lt;n;i++)
-        a[in.nextInt()-1][in.nextInt()-1]=1;
-    b=a;
-    f(n,a);
+    atm 特别钟情于这样一种方阵：每行每列有且仅有一个 1 。经过 atm 不断实验，他发现这种矩阵都是幂一矩阵。
 
-}
-public static void f(int n,int[][] a){
-    if(check(n,b))
-        System.out.print(count);
-    else{
+    现在，他的问题是，给定一个满足以上条件的方阵，他想求最小的 k 是多少。
+
+【输入格式】
+第一行一个正整数 n ，表示矩阵大小是 n * n 。
+接下来 n 行，每行两个正整数 i j 表示方阵的第 i 行第 j 列为 1。
+1 &lt;= i, j &lt;= n 。
+行号，列号都从1开始。
+
+【输出格式】
+一行。一个正整数，即题目中所说最小的 k 。
+
+【样例输入】
+5
+3 1
+1 2
+4 4
+2 3
+5 5
+
+【样例输出】
+3
+
+【数据范围】
+对于 30% 的数据满足 n &lt;= 10 
+对于 60% 的数据答案不超过 10^18 
+对于 100% 的数据满足 n &lt;= 10000
+
+
+资源约定：
+峰值内存消耗（含虚拟机） &lt; 256M
+CPU消耗  &lt; 1000ms
+
+
+请严格按要求输出，不要画蛇添足地打印类似：“请您输入...” 的多余内容。
+
+所有代码放在同一个源文件中，调试通过后，拷贝提交该源码。
+注意：不要使用package语句。不要使用jdk1.7及以上版本的特性。
+注意：主类的名字必须是：Main，否则按无效代码处理。
+
+
+import java.util.Scanner;
+
+
+public class c15 {
+
+    /**
+     * @param args
+     */
+    private static int count = 1;//初始为一次幂
+    private static int b[][];
+    private static int c[][];
+    public static void main(String[] args) {
+        // TODO Auto-generated method stub
+        Scanner in = new Scanner(System.in);
+        int n = in.nextInt();
+        int a[][] = new int [n][n];
+        b = new int[n][n];
+        c = new int [n][n];
         for(int i=0;i&lt;n;i++)
-            for(int j=0;j&lt;n;j++){
-                for(int q=0;q&lt;n;q++)
-                    if(b[i][q]==1&amp;b[i][q]==a[q][j]){
-                        c[i][j]=1;//矩阵乘法运算根据1的位置来确定计算后是否为1
-                        break;
-                    }
-            }
-        b=c;
-        count++;
+            a[in.nextInt()-1][in.nextInt()-1]=1;
+        b=a;
         f(n,a);
 
     }
+    public static void f(int n,int[][] a){
+        if(check(n,b))
+            System.out.print(count);
+        else{
+            for(int i=0;i&lt;n;i++)
+                for(int j=0;j&lt;n;j++){
+                    for(int q=0;q&lt;n;q++)
+                        if(b[i][q]==1&amp;b[i][q]==a[q][j]){
+                            c[i][j]=1;//矩阵乘法运算根据1的位置来确定计算后是否为1
+                            break;
+                        }
+                }
+            b=c;
+            count++;
+            f(n,a);
 
-}
-public static boolean  check(int n,int [][]a){
-    int m=0;
-    for(int i=0;i&lt;n;i++){
-        if(a[i][i]!=1)m=1;
+        }
+
     }
-    if(m==1)return false;
-    else
-        return true;
+    public static boolean  check(int n,int [][]a){
+        int m=0;
+        for(int i=0;i&lt;n;i++){
+            if(a[i][i]!=1)m=1;
+        }
+        if(m==1)return false;
+        else
+            return true;
+
+    }
 
 }
-</code></pre><p>}</p>
-<p>尽量减少运算量，根据矩阵乘法性质，直接判断乘以后是否为1。</p>
+</code></pre><p>尽量减少运算量，根据矩阵乘法性质，直接判断乘以后是否为1。</p>
 
       
     </div>
